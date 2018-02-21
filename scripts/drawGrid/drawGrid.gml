@@ -4,6 +4,7 @@
 We could enchance this script to take in a color as a parameter so that you could color the grid 
 differently on different maps to either make it stand out more of be more cohesive with the map colors*/
 
+//ballsack
 
 var w = 2;
 draw_set_color(c_white);
