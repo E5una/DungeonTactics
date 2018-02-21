@@ -1,0 +1,50 @@
+TODO
+
+		1. Comment out the draw step for the grid and use the script in this video instead to draw our grid.
+			https://www.youtube.com/watch?v=Yl-PXAa2Ivk
+	
+		2. Spawn the boss at a specific location in the code instead of dropping it in room editer. Review the code tutorial, should be easy from there.
+
+		3. Create a player when the room is created.
+			a. Create a warrior
+			b. Create a Mage
+			c. Create a Prist
+
+		4. Need an offset of 1/2 cellSize in the X and Y direction for everything we put down. The grid and the mp_grid have
+		to be ontop of eachother. We either need to generate everything 1/2 a step off, or generate those two things 1/2
+		a step off. Sure generating them half a step off seems easy, but then I'm not sure our variables are descriptive
+		and intuitive. Could create two global X and Ys, one used for the grid and one used for the spawns?
+				-Ended up creating convertXGrid and convertYGrid that are helper methods only to be used when
+				trying to get coordinates on a the lines of the grid. Otherwise I created myGrid_xOffset_adjusted
+				and myGrid_yOffset_adjusted, which each have 1/2 a cell added to the offset and then I adjusted
+				the convertX and convertY methods to use the adjusted values. Since everything uses those methods
+				to place things on the board, it was only one place to replace this.
+
+		5. Have an event when you click on the player that displays the squares they can move to. 
+			a. Create a semitransparent blue square sprite
+			b. Create an object called validSpace and give it the semitransparent blue sprite to denote viable squares.
+			c. Write a script that takes an x,y position and creates these blue squares in a loop going out from them to highlight valid spaces.
+				i. The loop shouldn't go off the map.
+					ia. need to make a getRightBounds() script
+					ib. need to make a getTopBounds() script
+					ic. need to make a getBottomBounds() script
+		
+6. Rather than displaying the squares on click, make a global variable to track the selected player, and show the squares after you choose to move with them
+			i. Create global variable
+			ii. On left click release, warrior/priest/mage all are correctly assigned as the currentlyselected unit
+			iii. When you hit m (for move), it shows the squares for the currently selected unit
+			iv. Need to make it so that it only shows one set of valid squares at a time. 
+			a. When you click on another player, the validSpace indicators should go away.
+		
+		7. Need to start defining spaces as free/unfree and have that update when people move.	
+
+		8. Have all player objects use a parent object that controls behavior etc.
+		9. Create an enemy parent object to hold common code for all enemies.
+		
+		10. Get camera to scroll when mouse presses against border.
+		
+		11. Place ghetto GUI in bottom middle of screen and have it stick.
+		
+12. Things need to not be clickable when they are under the HUD. Change the viewport? Set up some sort of view so that nothing is under the HUD.
+
+13. Add a button into the HUD that when you click it, prints out the message "Ability1"

@@ -1,0 +1,1 @@
+draw_sprite( spr_HUD,0,guiX,guiY );
